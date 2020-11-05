@@ -2,6 +2,9 @@ import Car.Car;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * The main class
+ */
 public class Main {
     public static void main(String []args) {
         Scanner in = new Scanner(System.in);
@@ -18,6 +21,15 @@ public class Main {
         in.close();
     }
 
+    /**
+     *
+     * @param car Passing an array of objects
+     * @param in passin Scanner to scan data
+     *
+     *           With this method user can input data from keyboard, but when I tested
+     *           this program I was fed up with entering data, and to make my life
+     *           easier I made the next method
+     */
     static void ScanCar(Car[] car, Scanner in) {
         for (int i = 0; i < car.length; i++) {
             car[i] = new Car();
@@ -36,20 +48,27 @@ public class Main {
         }
     }
 
+    /**
+     * Prints random data about cars
+     */
     static void CarArray(Car[] car) {
         Random random = new Random();
         String[] mas = {"C63 AMG", "ZAZ 968", "Clio", "Scenic", "Megan", "Leaf", "Model S", "Aveo", "Lancer EVO",
                         "Wrangler", "RS6 C7"};
+        String[] reg = {"ВС", "АА", "ВП", "СВ", "ВЛ", "ВК", "ВН", "АН", "ВР"};
         for (int i = 0; i < car.length; i++) {
             car[i] = new Car();
             car[i].setId(random.nextInt(9999));
             car[i].setModel(mas[random.nextInt(mas.length)]);
             car[i].setPrice(random.nextInt(50000) + 5000);
-            car[i].setReg_num(String.valueOf(random.nextInt(8999)+ 1000));
+            car[i].setReg_num(String.valueOf(reg[random.nextInt(mas.length)] + random.nextInt(8999)+ 1000) + reg[random.nextInt(mas.length)]);
             car[i].setYear(random.nextInt(30) + 1990);
         }
     }
 
+    /**
+     * Prints list of cars given model
+     */
     static void PrintCarModelInfo(Car[] car, Scanner in){
         System.out.print("Input car model about which you wanna get info: ");
         in.nextLine();
@@ -60,6 +79,10 @@ public class Main {
             }
         }
     }
+
+    /**
+     *  Prints list of cars given model which are using more than 'n' years
+     */
     static void PrintCarYearInfo(Car[] car, Scanner in){
         System.out.print("Input car model: ");
         String mod = in.nextLine();
@@ -71,6 +94,10 @@ public class Main {
             }
         }
     }
+
+    /**
+     * Prints list of cars given manufacture year, with price bigger than given price
+     */
     static void PrintCarPriceInfo(Car[] car, Scanner in){
         System.out.print("Input manufacture date of car: ");
         int year = in.nextInt();
