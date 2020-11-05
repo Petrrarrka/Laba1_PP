@@ -61,7 +61,7 @@ public class Main {
             car[i].setId(random.nextInt(9999));
             car[i].setModel(mas[random.nextInt(mas.length)]);
             car[i].setPrice(random.nextInt(50000) + 5000);
-            car[i].setReg_num(String.valueOf(reg[random.nextInt(mas.length)] + random.nextInt(8999)+ 1000) + reg[random.nextInt(mas.length)]);
+            car[i].setReg_num(reg[random.nextInt(reg.length)] + random.nextInt((8999)+ 1000) + reg[random.nextInt(reg.length)]);
             car[i].setYear(random.nextInt(30) + 1990);
         }
     }
@@ -101,7 +101,7 @@ public class Main {
     static void PrintCarPriceInfo(Car[] car, Scanner in){
         System.out.print("Input manufacture date of car: ");
         int year = in.nextInt();
-        System.out.println("Input car price: ");
+        System.out.print("Input car price: ");
         int price = in.nextInt();
         for (Car value : car){
             if (value.getYear() == year && value.getPrice() > price){
