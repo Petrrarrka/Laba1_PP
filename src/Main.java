@@ -15,20 +15,18 @@ public class Main {
         for (Car value : car){
             System.out.println(value.toString());
         }
-        PrintCarModelInfo(car, in);
-        PrintCarYearInfo(car, in);
-        PrintCarPriceInfo(car, in);
+        SetCarModelInfo(car, in);
+        SetCarYearInfo(car, in);
+        SetCarPriceInfo(car, in);
         in.close();
     }
 
     /**
      *
      * @param car Passing an array of objects
-     * @param in passin Scanner to scan data
+     * @param in Passing Scanner to scan data
      *
-     *           With this method user can input data from keyboard, but when I tested
-     *           this program I was fed up with entering data, and to make my life
-     *           easier I made the next method
+     *           With this method user can input data from keyboard
      */
     static void ScanCar(Car[] car, Scanner in) {
         for (int i = 0; i < car.length; i++) {
@@ -53,61 +51,103 @@ public class Main {
      */
     static void CarArray(Car[] car) {
         Random random = new Random();
-        String[] mas = {"C63 AMG", "ZAZ 968", "Clio", "Scenic", "Megan", "Leaf", "Model S", "Aveo", "Lancer EVO",
+        String[] mas = {"C63 AMG", "ZAZ 968", "Camry", "Scenic", "Megan", "M5 F90", "Model S", "Lancer",
                         "Wrangler", "RS6 C7"};
         String[] reg = {"ВС", "АА", "ВП", "СВ", "ВЛ", "ВК", "ВН", "АН", "ВР"};
         for (int i = 0; i < car.length; i++) {
             car[i] = new Car();
-            car[i].setId(random.nextInt(9999));
+            car[i].setId(random.nextInt(8999)+1000);
             car[i].setModel(mas[random.nextInt(mas.length)]);
             car[i].setPrice(random.nextInt(50000) + 5000);
-            car[i].setReg_num(reg[random.nextInt(reg.length)] + random.nextInt((8999)+ 1000) + reg[random.nextInt(reg.length)]);
+            car[i].setReg_num(reg[random.nextInt(reg.length)] + (random.nextInt(8999) + 1000) + reg[random.nextInt(reg.length)]);
             car[i].setYear(random.nextInt(30) + 1990);
         }
     }
 
+
     /**
-     * Prints list of cars given model
+     * Print list of cars given model
      */
-    static void PrintCarModelInfo(Car[] car, Scanner in){
-        System.out.print("Input car model about which you wanna get info: ");
-        in.nextLine();
-        String mod = in.nextLine();
-        for (Car value : car) {
-            if (value.getModel().equals(mod)) {
-                System.out.println(value.toString());
+    static void PrintCarModelInfo(Car value){
+        System.out.println(value.toString());
+    }
+    /**
+     * Find list of cars given model
+     */
+    static void FindCarModelInfo(Car[] car, String mod){
+        for (Car value : car){
+            if (value.getModel().equals(mod)){
+                PrintCarModelInfo(value);
             }
         }
     }
+    /**
+     * Set list of cars given model
+     */
+    static void SetCarModelInfo(Car[] car, Scanner in){
+        System.out.print("\nInput car model about which you wanna get info: ");
+        in.nextLine();
+        String mod = in. nextLine();
+        FindCarModelInfo(car, mod);
+    }
+
+
 
     /**
      *  Prints list of cars given model which are using more than 'n' years
      */
-    static void PrintCarYearInfo(Car[] car, Scanner in){
-        System.out.print("Input car model: ");
-        String mod = in.nextLine();
-        System.out.print("Input year of using car: ");
-        int year = in.nextInt();
+    static void PrintCarYearInfo(Car value){
+        System.out.println(value.toString());
+    }
+    /**
+     *  Find list of cars given model which are using more than 'n' years
+     */
+    static void FindCarYearInfo(Car[] car, String mod, int year){
         for (Car value : car){
             if(value.getModel().equals(mod) && (2020 - value.getYear()) > year){
-                System.out.println(value.toString());
+                PrintCarYearInfo(value);
             }
         }
     }
+    /**
+     *  Set list of cars given model which are using more than 'n' years
+     */
+    static void SetCarYearInfo(Car[] car, Scanner in){
+        System.out.print("\nInput car model: ");
+        String mod = in.nextLine();
+        System.out.print("Input year of using car: ");
+        int year = in.nextInt();
+        FindCarYearInfo(car, mod, year);
+    }
+
+
+
 
     /**
      * Prints list of cars given manufacture year, with price bigger than given price
      */
-    static void PrintCarPriceInfo(Car[] car, Scanner in){
-        System.out.print("Input manufacture date of car: ");
+    static void PrintCarPriceInfo(Car value){
+        System.out.println(value.toString());
+    }
+    /**
+     * Find list of cars given manufacture year, with price bigger than given price
+     */
+    static void FindCarPriceInfo(Car[] car, int year, int price){
+        for (Car value : car){
+            if (value.getYear() == year && value.getPrice() > price){
+                PrintCarPriceInfo(value);
+            }
+        }
+    }
+    /**
+     * Set list of cars given manufacture year, with price bigger than given price
+     */
+    static void SetCarPriceInfo(Car[] car, Scanner in){
+        System.out.print("\nInput manufacture date of car: ");
         int year = in.nextInt();
         System.out.print("Input car price: ");
         int price = in.nextInt();
-        for (Car value : car){
-            if (value.getYear() == year && value.getPrice() > price){
-                System.out.println(value.toString());
-            }
-        }
+        FindCarPriceInfo(car, year, price);
     }
 }
 
