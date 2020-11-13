@@ -2,19 +2,23 @@ package Car;
 
 public class Car {
     private int id, year, price;
-    private String model, reg_num;
+    private String model;
+    private String reg_num;
 
-    public void setId(int ID){ id = ID; }
-    public void setModel(String MODEL){ model = MODEL; }
-    public void setYear(int YEAR){ year = YEAR; }
-    public void setPrice(int PRICE){ price = PRICE; }
-    public void setReg_num(String REG_NUM) { reg_num = REG_NUM; }
+    public void setPrice(int price) { this.price = price; }
+    public void setReg_num(String reg_num) { this.reg_num = reg_num; }
+    public void setModel(String model) { this.model = model; }
+    public void setId(int id) { this.id = id; }
+    public void setYear(int year) { this.year = year; }
 
-    public int getId(){ return id; }
-    public String getModel(){ return model; }
-    public int getYear(){ return year; }
-    public int getPrice(){ return price; }
-    public String getReg_num(){ return reg_num; }
+
+
+    public String getReg_num() { return reg_num; }
+    public String getModel() { return model; }
+    public int getPrice() { return price; }
+    public int getYear() { return year; }
+    public int getId() { return id; }
+
 
     public String toString(){
         return "\t-----------" + "\t\tID: " + this.id + "\t\tModel: " + this.model + "\t\tRegister number: "+ reg_num +
