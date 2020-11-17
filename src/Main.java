@@ -65,10 +65,7 @@ public class Main {
     }
 
 
-    /**
-     * Print list of cars given model
-     */
-    static void PrintCarModelInfo(Car value){
+    static void Print(Car value){
         System.out.println(value.toString());
     }
     /**
@@ -77,7 +74,7 @@ public class Main {
     static void FindCarModelInfo(Car[] car, String mod){
         for (Car value : car){
             if (value.getModel().equals(mod)){
-                PrintCarModelInfo(value);
+                Print(value);
             }
         }
     }
@@ -94,18 +91,12 @@ public class Main {
 
 
     /**
-     *  Prints list of cars given model which are using more than 'n' years
-     */
-    static void PrintCarYearInfo(Car value){
-        System.out.println(value.toString());
-    }
-    /**
      *  Find list of cars given model which are using more than 'n' years
      */
     static void FindCarYearInfo(Car[] car, String mod, int year){
         for (Car value : car){
             if(value.getModel().equals(mod) && (2020 - value.getYear()) > year){
-                PrintCarYearInfo(value);
+                Print(value);
             }
         }
     }
@@ -122,20 +113,13 @@ public class Main {
 
 
 
-
-    /**
-     * Prints list of cars given manufacture year, with price bigger than given price
-     */
-    static void PrintCarPriceInfo(Car value){
-        System.out.println(value.toString());
-    }
     /**
      * Find list of cars given manufacture year, with price bigger than given price
      */
     static void FindCarPriceInfo(Car[] car, int year, int price){
         for (Car value : car){
             if (value.getYear() == year && value.getPrice() > price){
-                PrintCarPriceInfo(value);
+                Print(value);
             }
         }
     }
@@ -150,6 +134,3 @@ public class Main {
         FindCarPriceInfo(car, year, price);
     }
 }
-
-
-
